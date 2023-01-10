@@ -54,7 +54,7 @@ namespace jni
         Type used to denote the Java byte type.
      */
     typedef unsigned char byte_t;
-
+#if !defined(JNIPP_DISABLE_EXCEPTION)
 #ifdef JNIPP_EXCEPTION_CLASS
 
     /**
@@ -70,7 +70,7 @@ namespace jni
     typedef std::runtime_error Exception;
 
 #endif // JNIPP_EXCEPTION_CLASS
-
+#endif
     // Foward Declarations
     class Object;
 
@@ -985,7 +985,7 @@ namespace jni
         /** Destroys the running instance of the JVM. */
         ~Vm();
     };
-
+#if !defined(JNIPP_DISABLE_EXCEPTION)
     /**
         A Java method call threw an Exception.
      */
@@ -1024,7 +1024,7 @@ namespace jni
          */
         InitializationException(const char* msg) : Exception(msg) {}
     };
-
+#endif
     /*
         Array Implementation
      */
